@@ -1,0 +1,16 @@
+@startuml
+!pragma layout smetana
+
+' hide the spot
+hide circle
+' avoid problems with angled crows feet
+skinparam linetype ortho
+
+entity Course {
+    #id : long <<PK auto>>
+    --
+    versionid : int
+    description : text
+}
+
+@enduml
