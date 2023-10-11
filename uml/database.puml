@@ -1,16 +1,215 @@
 @startuml
 !pragma layout smetana
 
-' hide the spot
+skinparam linetype polyline
 hide circle
-' avoid problems with angled crows feet
-skinparam linetype ortho
 
 entity Course {
-    #id : long <<PK auto>>
-    --
-    versionid : int
-    description : text
+  #id
+  --
+  version_id : int
+  shortname : str
+  image : str
+  description : str
+  order_priority : int
+  restricted : bool
+  sequencing : str
 }
+
+entity Section {
+  #id
+  --
+  course_id : int <<FK>>
+  title : str
+  order : int
+  image : str
+  password : str
+}
+
+entity Activity {
+  #id
+  --
+  section_id : int <<FK>>
+  order: int
+  type : str
+  image : str
+  start_date : datetime
+  end_date : datetime
+  digest : str
+  word_count : int
+  is_baseline : bool
+  content : str
+  location : str
+}
+
+entity UnlockedSection {
+  user_id : int <<FK>>
+  section_id : int <<FK>>
+  --
+  password : str
+}
+
+entity Media {
+  #id
+  --
+  activity_id : int <<FK>>
+  digest : str
+  filename : str
+  length : int
+  filesize : int
+  download_url : str
+}
+
+entity TrackerLog {
+  #id
+  --
+  course_id : int <<FK>>
+  user_id : int <<FK>>
+  date : datetime
+  digest : str
+  data : str
+  submitted : bool
+  in_progress : bool
+  completed : bool
+  type : str
+  exported : bool
+  event : str
+  points : int
+}
+
+entity QuizAttempt {
+  #id
+  --
+  course_id : int <<FK>>
+  user_id : int <<FK>>
+  result_date : datetime
+  digest : str
+  sent : bool
+  score : int
+  max_score : int
+  passed : bool
+  exported : bool
+  event : str
+  time_taken : int
+  type : str
+  points : int
+}
+
+entity User {
+  #id
+  --
+  username : str
+  first_name : str
+  last_name : str
+  password : str
+  api_key : str
+  email : str
+  last_login_date : datetime
+  login_count : int
+  points : int
+  badges : int
+  offline_register : bool
+}
+
+entity CourseGamification {
+  #id
+  --
+  course_id : int <<FK>>
+  event : str
+  points : int
+}
+
+entity ActivityGamification {
+  #id
+  --
+  activity_id : int <<FK>>
+  event : str
+  points : int
+}
+
+entity UserCustomField {
+  user_id : int <<FK>>
+  custom_field_id : int <<FK>>
+  --
+  value_str : str
+  value_int : int
+  value_bool : bool
+  value_float : float
+
+}
+
+entity CustomField {
+  #id
+  --
+  key : str
+  label : str
+  help_text : str
+  type : str
+  visible_by : str
+  visible_value : str
+  order : str
+  required : bool
+  collection_name : str
+  collection_by : str
+}
+
+entity CustomFieldCollection {
+  #id
+  --
+  name : str
+  key : str
+  value : str
+
+}
+
+entity CourseCohort {
+  #id
+  --
+  cohort : int
+  course_shortname : str
+}
+
+entity UserCohort {
+  #id
+  --
+  cohort : int
+  username : str
+}
+
+entity CourseLang {
+  #id
+  --
+  course_id : int
+  lang : str
+}
+
+
+Course --|{ Section
+Course --|{ CourseGamification
+Course --|{ CourseLang
+Course --o{ CourseCohort
+Course --o{ TrackerLog
+
+Section --|{ Activity
+Section --o| UnlockedSection
+
+Activity --o{ Media
+Activity --o{ ActivityGamification
+
+QuizAttempt --o{ User
+QuizAttempt --o{ Course
+
+User --o{ TrackerLog
+User --o{ UserCustomField
+User --o{ UserPrefs
+User --o{ UserCohort
+
+CustomField --o{ UserCustomField
+CustomField --o{ CustomFieldCollection
+
+
+
+
+
 
 @enduml
