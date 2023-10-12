@@ -1,7 +1,7 @@
 @startuml
 !pragma layout smetana
 
-skinparam linetype polyline
+left to right direction
 hide circle
 
 entity Course {
