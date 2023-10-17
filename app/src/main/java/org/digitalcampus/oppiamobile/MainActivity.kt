@@ -1,7 +1,8 @@
-package org.digitalcampus.mobile.learning
+package org.digitalcampus.oppiamobile
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import org.digitalcampus.mobile.learning.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -7,14 +7,17 @@
     <application
         android:allowBackup="false"
         tools:replace="android:allowBackup"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/dc_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/dc_logo"
         android:supportsRtl="true"
-        android:theme="@style/Theme.OppiaMobile">
+        android:theme="@style/Oppia.Theme">
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name="org.digitalcampus.oppiamobile.ui.auth.AuthActivity"
+            android:exported="true"
+            android:theme="@style/Oppia.ToolbarTheme"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

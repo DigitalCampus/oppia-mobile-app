@@ -1,4 +1,4 @@
-package org.digitalcampus.mobile.learning
+package org.digitalcampus.oppiamobile
 
 import org.junit.Test
 
