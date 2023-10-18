@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OppiaMobile">
         <activity
-            android:name=".MainActivity"
+            android:name="org.digitalcampus.oppiamobile.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

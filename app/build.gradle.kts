@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    namespace = "org.digitalcampus.mobile.learning"
+    namespace = "org.digitalcampus.oppiamobile"
     compileSdk = 33
 
     defaultConfig {

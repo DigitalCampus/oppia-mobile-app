@@ -109,7 +109,7 @@ entity User {
   points : int
   badges : int
   offline_register : bool
-}
+}  @PrimaryKey(autoGenerate = true) val id: Int,
 
 entity CourseGamification {
   #id
@@ -205,7 +205,6 @@ User --o{ UserPrefs
 User --o{ UserCohort
 
 CustomField --o{ UserCustomField
-CustomField --o{ CustomFieldCollection
 
 
 
