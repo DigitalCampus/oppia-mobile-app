@@ -1,4 +1,4 @@
-package org.digitalcampus.oppiamobile.data.auth.remote
+package org.digitalcampus.oppiamobile.data.user.remote.auth
 
 import com.google.gson.annotations.SerializedName
 
@@ -11,10 +11,6 @@ data class LoginResponse(
     val firstName: String,
     @SerializedName("last_name")
     val lastName: String,
-    @SerializedName("organisation")
-    val organisation: String,
-    @SerializedName("job_title")
-    val jobTitle: String,
     @SerializedName("points")
     val points: Int,
     @SerializedName("badges")

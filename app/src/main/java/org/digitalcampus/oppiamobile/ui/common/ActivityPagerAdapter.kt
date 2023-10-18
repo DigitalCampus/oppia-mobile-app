@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.google.android.material.tabs.TabLayout
-import org.digitalcampus.mobile.learning.R
+import org.digitalcampus.oppiamobile.R
 
 class ActivityPagerAdapter(
     private val ctx: Context,

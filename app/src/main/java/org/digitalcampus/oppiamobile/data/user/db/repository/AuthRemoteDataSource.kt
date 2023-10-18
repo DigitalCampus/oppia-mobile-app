@@ -1,8 +1,7 @@
-package org.digitalcampus.oppiamobile.data.auth.repository
+package org.digitalcampus.oppiamobile.data.user.db.repository
 
-import org.digitalcampus.oppiamobile.data.auth.db.UserDao
-import org.digitalcampus.oppiamobile.data.auth.remote.AuthRemoteService
-import org.digitalcampus.oppiamobile.data.auth.remote.LoginRequest
+import org.digitalcampus.oppiamobile.data.user.remote.auth.AuthRemoteService
+import org.digitalcampus.oppiamobile.data.user.remote.auth.LoginRequest
 import org.digitalcampus.oppiamobile.domain.model.User
 import javax.inject.Inject
 

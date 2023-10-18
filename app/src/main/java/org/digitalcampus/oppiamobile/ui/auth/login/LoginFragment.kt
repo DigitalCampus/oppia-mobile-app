@@ -10,8 +10,8 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import org.digitalcampus.mobile.learning.R
-import org.digitalcampus.mobile.learning.databinding.FragmentLoginBinding
+import org.digitalcampus.oppiamobile.R
+import org.digitalcampus.oppiamobile.databinding.FragmentLoginBinding
 import org.digitalcampus.oppia.fragments.AppFragment
 import org.digitalcampus.oppiamobile.utils.UIUtils
 

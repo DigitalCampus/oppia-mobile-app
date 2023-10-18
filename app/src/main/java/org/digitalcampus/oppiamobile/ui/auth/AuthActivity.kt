@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import org.digitalcampus.mobile.learning.R
-import org.digitalcampus.mobile.learning.databinding.ActivityWelcomeBinding
+import org.digitalcampus.oppiamobile.R
+import org.digitalcampus.oppiamobile.databinding.ActivityWelcomeBinding
 import org.digitalcampus.oppiamobile.ui.auth.login.LoginFragment
 import org.digitalcampus.oppiamobile.ui.common.ActivityPagerAdapter
 

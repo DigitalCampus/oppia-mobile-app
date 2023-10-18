@@ -1,9 +1,9 @@
-package org.digitalcampus.oppiamobile.data.auth.repository
+package org.digitalcampus.oppiamobile.data.user.db.repository
 
 import javax.inject.Inject
 
-class AuthRepository @Inject constructor(
-    val authDbDataSource: AuthDbDataSource,
+class UserRepository @Inject constructor(
+    val authDbDataSource: UserDbDataSource,
     val authRemoteDataSource: AuthRemoteDataSource
 ) {
 

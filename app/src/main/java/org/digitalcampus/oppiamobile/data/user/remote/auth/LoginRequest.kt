@@ -1,4 +1,4 @@
-package org.digitalcampus.oppiamobile.data.auth.remote
+package org.digitalcampus.oppiamobile.data.user.remote.auth
 
 data class LoginRequest(
     val username: String,

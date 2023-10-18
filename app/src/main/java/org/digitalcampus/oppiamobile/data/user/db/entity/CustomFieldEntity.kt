@@ -41,7 +41,7 @@ data class CustomFieldEntity (
         ),
     ]
 )
-data class UserCustomFieldEntityCrossRef (
+data class UserCustomFieldEntity (
     @ColumnInfo(name = "user_id") val userId: Long,
     @ColumnInfo(name = "field_key") val fieldKey: String = "",
 

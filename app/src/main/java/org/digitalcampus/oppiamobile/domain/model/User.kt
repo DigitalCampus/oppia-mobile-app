@@ -7,7 +7,5 @@ data class User(
     val username: String,
     val firstName: String,
     val lastName: String,
-    val organisation: String,
-    val jobTitle: String,
     val apiKey: String,
 )

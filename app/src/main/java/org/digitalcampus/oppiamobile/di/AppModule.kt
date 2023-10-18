@@ -8,11 +8,11 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.digitalcampus.oppiamobile.data.auth.db.UserDao
-import org.digitalcampus.oppiamobile.data.auth.remote.AuthRemoteService
-import org.digitalcampus.oppiamobile.data.auth.repository.AuthDbDataSource
-import org.digitalcampus.oppiamobile.data.auth.repository.AuthRemoteDataSource
-import org.digitalcampus.oppiamobile.data.auth.repository.AuthRepository
+import org.digitalcampus.oppiamobile.data.user.db.dao.UserDao
+import org.digitalcampus.oppiamobile.data.user.remote.auth.AuthRemoteService
+import org.digitalcampus.oppiamobile.data.user.db.repository.UserDbDataSource
+import org.digitalcampus.oppiamobile.data.user.db.repository.AuthRemoteDataSource
+import org.digitalcampus.oppiamobile.data.user.db.repository.UserRepository
 import org.digitalcampus.oppiamobile.data.config.db.AppDatabase
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -56,7 +56,7 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideAuthDbDataSource(userDao: UserDao) = AuthDbDataSource(userDao)
+    fun provideAuthDbDataSource(userDao: UserDao) = UserDbDataSource(userDao)
 
     @Singleton
     @Provides
@@ -69,8 +69,8 @@ class AppModule {
     @Singleton
     @Provides
     fun provideAuthRepository(
-        authDbDataSource: AuthDbDataSource,
+        authDbDataSource: UserDbDataSource,
         authRemoteDataSource: AuthRemoteDataSource
-    ) = AuthRepository(authDbDataSource, authRemoteDataSource)
+    ) = UserRepository(authDbDataSource, authRemoteDataSource)
 
 }

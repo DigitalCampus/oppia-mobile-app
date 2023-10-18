@@ -1,10 +1,9 @@
 package org.digitalcampus.oppia.fragments
 
 import android.app.ProgressDialog
-import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import org.digitalcampus.mobile.learning.R
+import org.digitalcampus.oppiamobile.R
 
 open class AppFragment : Fragment() {
 

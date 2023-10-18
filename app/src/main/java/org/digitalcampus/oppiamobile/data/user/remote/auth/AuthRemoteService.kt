@@ -1,4 +1,4 @@
-package org.digitalcampus.oppiamobile.data.auth.remote
+package org.digitalcampus.oppiamobile.data.user.remote.auth
 
 import retrofit2.http.Body
 import retrofit2.http.POST
