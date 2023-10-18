@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:background="@drawable/bg_toolbar"
+            android:drawableTop="@drawable/brand_icon"
+            android:gravity="center"
+            android:paddingTop="@dimen/course_icon_size"
+            android:paddingBottom="@dimen/padding_large"
+            android:text="@string/app_name"
+            android:textAppearance="@style/SectionHeader"
+            android:textColor="@color/toolbar_text_color" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_layout_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintTextAppearance="@style/Oppia.TextLabel">
+
+                <EditText
+                    android:id="@+id/login_username_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/padding_large"
+                    android:layout_marginEnd="@dimen/padding_large"
+                    android:hint="@string/login_username_title"
+                    android:inputType="text"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_layout_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true">
+
+                <EditText
+                    android:id="@+id/login_password_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/padding_large"
+                    android:layout_marginEnd="@dimen/padding_large"
+                    android:hint="@string/login_password_title"
+                    android:inputType="textPassword"
+                    android:textSize="15sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/login_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_large"
+                android:layout_marginTop="@dimen/padding_medium"
+                android:layout_marginEnd="@dimen/padding_large"
+                android:text="@string/title_login"
+                android:theme="@style/PrimaryButton" />
+
+            <Button
+                android:id="@+id/btn_reset_password"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_large"
+                android:layout_marginEnd="@dimen/padding_large"
+                android:text="@string/title_btn_reset_password" />
+
+            <Button
+                android:id="@+id/btn_remember_username"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_large"
+                android:layout_marginEnd="@dimen/padding_large"
+                android:text="@string/title_btn_remember_username" />
+
+            <TextView
+                android:id="@+id/dont_have_account"
+                style="@style/SubheaderText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/padding_large"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:gravity="center"
+                android:text="@string/login_dont_have_account" />
+
+            <Button
+                android:id="@+id/action_register_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_large"
+                android:layout_marginEnd="@dimen/padding_large"
+                android:text="@string/title_register" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

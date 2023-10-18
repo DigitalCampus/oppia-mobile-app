@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="background_dark">#333333</color>
+    <color name="background_light">#eeeeee</color>
+    <color name="list_divider">#888</color>
+    <color name="list_divider_light">#cccccc</color>
+    <color name="text_dark">#222222</color>
+    <color name="text_grey">#666666</color>
+    <color name="text_light">#ffffff</color>
+    <color name="default_icon_foreground">#666666</color>
+    <color name="button_background">#eeeeee</color>
+    <color name="activity_icon_background">#ffffff</color>
+    <color name="highlight_label">#434343</color>
+    <color name="highlight_separator">#b9b9b9</color>
+    <color name="text_error">#B5330A</color>
+    <color name="stroke">#dfdfdf</color>
+    <color name="quiz_navigation_bar">#d2d2d2</color>
+    <color name="quiz_navigation_button">#FF5A595B</color>
+    <color name="cardlist_badge">#6D6B6D</color>
+    <color name="background_cover">#c6333333</color>
+    <color name="transparent">#00ffffff</color>
+    <color name="feedback_box">#f3f1f1</color>
+
+    <color name="white">#FFF</color>
+    <color name="black">#000</color>
+    <color name="grey_light">#e2e2e2</color>
+    <color name="grey_dark">#7E7E7E</color>
+    <color name="red">#E53935</color>
+
+    <color name="pink_dev_message">#ffcdd2</color>
+
+    <color name="bg_badge_status_draft">#87589d</color>
+    <color name="bg_badge_status_new_download_disabled">#4ea8c2</color>
+    <color name="bg_badge_status_archived">#3d3d3d</color>
+    <color name="bg_badge_status_read_only">#bf7d54</color>
 </resources>
