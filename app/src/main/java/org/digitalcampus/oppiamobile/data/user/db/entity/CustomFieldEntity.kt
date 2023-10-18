@@ -25,7 +25,7 @@ data class CustomFieldEntity (
 
 @Entity(
     tableName = "user_custom_field",
-    primaryKeys = ["fieldKey", "userId"],
+    primaryKeys = ["field_key", "user_id"],
     foreignKeys = [
         ForeignKey(
             entity = CustomFieldEntity::class,
@@ -54,8 +54,8 @@ data class UserCustomFieldEntity (
 data class UserCustomFields (
     @Embedded val user: UserEntity,
     @Relation(
-        parentColumn = "user_id",
-        entityColumn = "fieldKey"
+        parentColumn = "id", // user_id
+        entityColumn = "key" // field_key
     )
     val customFields : List<CustomFieldEntity>
 )

@@ -9,14 +9,14 @@ plugins {
 
 android {
     namespace = "org.digitalcampus.oppiamobile"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "org.digitalcampus.mobile.learning"
         minSdk = 21
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
+        targetSdk = 34
+        versionCode = 112
+        versionName = "8.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -28,11 +28,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 
     android.buildFeatures.viewBinding = true
@@ -43,7 +43,7 @@ dependencies {
     val workVersion = "2.7.1"
     val roomVersion = "2.5.2"
     val fragmentVersion = "1.5.4"
-    val daggerVersion = "2.43.2"
+    val hiltVersion = "2.48.1"
     val appcompatVersion = "1.6.1"
     val espressoVersion = "3.5.1"
     val kotlinVersion = "1.8.20"
@@ -67,8 +67,8 @@ dependencies {
     implementation("androidx.room:room-ktx:$roomVersion")
     kapt("androidx.room:room-compiler:$roomVersion")
 
-    implementation("com.google.dagger:hilt-android:2.45")
-    kapt("com.google.dagger:hilt-compiler:2.45")
+    implementation("com.google.dagger:hilt-android:$hiltVersion")
+    kapt("com.google.dagger:hilt-compiler:$hiltVersion")
 
     // TESTING
     testImplementation("junit:junit:4.13.2")

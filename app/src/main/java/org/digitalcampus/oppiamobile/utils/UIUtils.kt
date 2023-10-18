@@ -19,7 +19,7 @@ package org.digitalcampus.oppiamobile.utils
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
-import org.digitalcampus.mobile.learning.R
+import org.digitalcampus.oppiamobile.R
 
 object UIUtils {
     val TAG = UIUtils::class.simpleName

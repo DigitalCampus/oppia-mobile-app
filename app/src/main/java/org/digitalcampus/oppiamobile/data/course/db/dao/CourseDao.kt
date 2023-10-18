@@ -19,6 +19,6 @@ interface CourseDao {
     fun getByShortname(shortname: String): CourseEntity
 
     @Query("SELECT EXISTS(SELECT * FROM course WHERE shortname = :shortname)")
-    fun isInstalled(shortname: String)
+    fun isInstalled(shortname: String) : Boolean
 
 }
