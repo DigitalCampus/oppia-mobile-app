@@ -11,5 +11,5 @@ import org.digitalcampus.oppiamobile.data.user.db.entity.UserEntity
 interface UserDao : BaseDao<UserEntity> {
 
     @Query("SELECT * FROM user WHERE username = :username")
-    fun getByUsername(username: String): UserEntity
+    suspend fun getByUsername(username: String): UserEntity?
 }
