@@ -10,9 +10,9 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.digitalcampus.oppiamobile.data.user.db.dao.UserDao
 import org.digitalcampus.oppiamobile.data.user.remote.auth.AuthRemoteService
-import org.digitalcampus.oppiamobile.data.user.db.repository.UserDbDataSource
-import org.digitalcampus.oppiamobile.data.user.db.repository.AuthRemoteDataSource
-import org.digitalcampus.oppiamobile.data.user.db.repository.UserRepository
+import org.digitalcampus.oppiamobile.data.user.repository.UserDbDataSource
+import org.digitalcampus.oppiamobile.data.user.repository.AuthRemoteDataSource
+import org.digitalcampus.oppiamobile.data.user.repository.UserRepository
 import org.digitalcampus.oppiamobile.data.config.db.AppDatabase
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

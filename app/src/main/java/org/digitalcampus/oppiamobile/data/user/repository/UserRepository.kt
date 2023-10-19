@@ -1,4 +1,4 @@
-package org.digitalcampus.oppiamobile.data.user.db.repository
+package org.digitalcampus.oppiamobile.data.user.repository
 
 import javax.inject.Inject
 

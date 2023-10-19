@@ -1,4 +1,4 @@
-package org.digitalcampus.oppiamobile.data.user.db.repository
+package org.digitalcampus.oppiamobile.data.user.repository
 
 import org.digitalcampus.oppiamobile.data.user.remote.auth.AuthRemoteService
 import org.digitalcampus.oppiamobile.data.user.remote.auth.LoginRequest
