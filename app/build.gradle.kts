@@ -4,7 +4,6 @@ plugins {
     id("org.jetbrains.kotlin.kapt")
     id("dagger.hilt.android.plugin")
     id("com.google.devtools.ksp")
-
 }
 
 android {
@@ -41,7 +40,7 @@ android {
 dependencies {
 
     val workVersion = "2.7.1"
-    val roomVersion = "2.5.2"
+    val roomVersion = "2.6.0"
     val fragmentVersion = "1.5.4"
     val hiltVersion = "2.48.1"
     val appcompatVersion = "1.6.1"
@@ -65,7 +64,8 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
     implementation("androidx.room:room-ktx:$roomVersion")
-    kapt("androidx.room:room-compiler:$roomVersion")
+    ksp("androidx.room:room-compiler:$roomVersion")
+
 
     implementation("com.google.dagger:hilt-android:$hiltVersion")
     kapt("com.google.dagger:hilt-compiler:$hiltVersion")

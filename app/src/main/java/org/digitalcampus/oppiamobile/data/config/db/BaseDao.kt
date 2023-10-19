@@ -15,7 +15,7 @@ interface BaseDao<T> {
     suspend fun insert(item: T): Long
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(list: List<T>?)
+    suspend fun insertAll(list: List<T>)
 
     /**
      * If the item exists, the operation is aborted
@@ -25,7 +25,7 @@ interface BaseDao<T> {
     suspend fun insertIfNotExists(item: T): Long
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertAllIfNotExists(list: List<T>?)
+    suspend fun insertAllIfNotExists(list: List<T>)
 
     /**
      * @return number of rows updated
@@ -37,11 +37,11 @@ interface BaseDao<T> {
      * @return number of rows updated
      */
     @Update
-    suspend fun updateAll(list: List<T>?): Int
+    suspend fun updateAll(list: List<T>): Int
 
     @Delete
     suspend fun delete(vararg item: T): Int
 
     @Delete
-    suspend fun deleteAll(list: List<T>?): Int
+    suspend fun deleteAll(list: List<T>): Int
 }
