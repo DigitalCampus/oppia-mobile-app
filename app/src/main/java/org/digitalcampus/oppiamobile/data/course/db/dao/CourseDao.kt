@@ -4,13 +4,11 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import org.digitalcampus.oppiamobile.data.config.db.BaseDao
 import org.digitalcampus.oppiamobile.data.course.db.entity.CourseEntity
 
 @Dao
-interface CourseDao {
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(course : CourseEntity)
+interface CourseDao : BaseDao<CourseEntity> {
 
     @Query("SELECT * FROM course")
     fun getAll(): List<CourseEntity>

@@ -6,7 +6,7 @@ import org.digitalcampus.oppiamobile.data.user.db.entity.PreferencesEntity
 
 
 @Dao
-public interface PreferencesDao {
+interface PreferencesDao {
 
     @Query("SELECT * FROM user_preference")
     fun getAll() : List<PreferencesEntity>

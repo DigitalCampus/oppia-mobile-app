@@ -5,15 +5,13 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
+import org.digitalcampus.oppiamobile.data.config.db.BaseDao
 import org.digitalcampus.oppiamobile.data.user.db.entity.CustomFieldEntity
 import org.digitalcampus.oppiamobile.data.user.db.entity.UserCustomFields
 
 
 @Dao
-interface CustomFieldDao {
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(customField : CustomFieldEntity)
+interface CustomFieldDao : BaseDao<CustomFieldEntity> {
 
     @Query("SELECT * FROM custom_field ORDER BY orderby")
     fun getAll(): List<CustomFieldEntity>
