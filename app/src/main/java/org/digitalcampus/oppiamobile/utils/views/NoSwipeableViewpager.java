@@ -1,4 +1,4 @@
-package org.digitalcampus.oppiamobile.utils.ui;
+package org.digitalcampus.oppiamobile.utils.views;
 
 import android.content.Context;
 import android.util.AttributeSet;

@@ -46,7 +46,6 @@ class LoginFragment : AppFragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.uiState.flowWithLifecycle(lifecycle).collect { state ->
 
-                Log.d(TAG, "uiState collect: $state")
                 if (state.loading) {
                     showProgressDialog(getString(R.string.loading))
                 } else {
