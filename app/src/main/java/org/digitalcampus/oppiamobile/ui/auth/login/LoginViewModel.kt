@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.update
 import org.digitalcampus.oppiamobile.domain.use_cases.CheckFieldNotEmpty
 import javax.inject.Inject
 
-@HiltViewModel
 class LoginViewModel @Inject constructor() : ViewModel() {
 
 
