@@ -1,6 +1,5 @@
 package org.digitalcampus.oppiamobile.ui.common
 
-
 import android.content.Context
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
@@ -16,11 +15,10 @@ class ActivityPagerAdapter(
     private val ctx: Context,
     fm: FragmentManager,
     private val fragments: List<Fragment>,
-    private val tabTitles: List<String>
+    private val tabTitles: List<String>,
 ) : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     private val TAG = ActivityPagerAdapter::class.simpleName
-
 
     override fun getItem(index: Int): Fragment {
         return fragments[index]

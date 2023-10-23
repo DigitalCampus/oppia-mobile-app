@@ -2,7 +2,6 @@ package org.digitalcampus.oppiamobile.utils
 
 import android.content.Context
 import android.net.ConnectivityManager
-import android.net.Network
 import android.net.NetworkCapabilities
 import android.os.Build
 
@@ -16,9 +15,9 @@ class ConnectivityUtils(private val context: Context) {
             return when {
                 actNw.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
                 actNw.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
-                //for other device how are able to connect with Ethernet
+                // for other device how are able to connect with Ethernet
                 actNw.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
-                //for check internet over Bluetooth
+                // for check internet over Bluetooth
                 actNw.hasTransport(NetworkCapabilities.TRANSPORT_BLUETOOTH) -> true
                 else -> false
             }
@@ -27,5 +26,4 @@ class ConnectivityUtils(private val context: Context) {
             return connectivityManager.activeNetworkInfo?.isConnected ?: false
         }
     }
-
 }

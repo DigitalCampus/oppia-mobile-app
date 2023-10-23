@@ -11,7 +11,7 @@ object CryptoUtils {
     private val TAG = CryptoUtils::class.simpleName
     private val preferredAlgorithms = listOf(
         Pair("sha1", "SHA-1"),
-        Pair("md5", "MD5")
+        Pair("md5", "MD5"),
     )
 
     private fun encryptWithAlgorithm(password: String, algorithm: Pair<String, String>): String {
@@ -39,5 +39,4 @@ object CryptoUtils {
         }
         return ""
     }
-
 }

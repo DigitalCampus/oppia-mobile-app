@@ -95,7 +95,6 @@ object UIUtils {
 //        }
 //    }
 
-
     fun showAlert(
         context: Context,
         message: String,
@@ -113,7 +112,6 @@ object UIUtils {
             show()
         }
     }
-
 
 //    /**
 //     * @param ctx
@@ -268,5 +266,4 @@ object UIUtils {
 //            .setNegativeButton(context.getString(R.string.cancel), null)
 //            .show()
 //    }
-
 }

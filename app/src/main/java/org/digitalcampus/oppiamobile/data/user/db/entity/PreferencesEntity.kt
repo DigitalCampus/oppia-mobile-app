@@ -11,11 +11,11 @@ import androidx.room.PrimaryKey
  */
 
 @Entity(tableName = "user_preference")
-data class PreferencesEntity (
+data class PreferencesEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "_id") val id: Long,
 
     @ColumnInfo(name = "username") val username: String,
     @ColumnInfo(name = "preference") val preference: String,
-    @ColumnInfo(name = "value") val value: String
+    @ColumnInfo(name = "value") val value: String,
 )

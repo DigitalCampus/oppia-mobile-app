@@ -1,4 +1,4 @@
-package org.digitalcampus.oppiamobile.domain.use_cases
+package org.digitalcampus.oppiamobile.domain.useCases
 
 import org.digitalcampus.oppiamobile.data.user.db.entity.passwordEncrypted
 import org.digitalcampus.oppiamobile.data.user.repository.UserRepository
@@ -8,7 +8,7 @@ import org.digitalcampus.oppiamobile.utils.CryptoUtils
 import javax.inject.Inject
 
 class UserLoginLocalUseCase @Inject constructor(
-    private val userRepository: UserRepository
+    private val userRepository: UserRepository,
 ) {
 
     suspend operator fun invoke(username: String, password: String): User {
@@ -23,6 +23,5 @@ class UserLoginLocalUseCase @Inject constructor(
                 throw Exception("Wrong password")
             }
         }
-
     }
 }

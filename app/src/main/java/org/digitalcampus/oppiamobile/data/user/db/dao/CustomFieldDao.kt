@@ -1,14 +1,11 @@
 package org.digitalcampus.oppiamobile.data.user.db.dao
 
 import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
 import org.digitalcampus.oppiamobile.data.config.db.BaseDao
 import org.digitalcampus.oppiamobile.data.user.db.entity.CustomFieldEntity
 import org.digitalcampus.oppiamobile.data.user.db.entity.UserCustomFields
-
 
 @Dao
 interface CustomFieldDao : BaseDao<CustomFieldEntity> {
@@ -19,5 +16,4 @@ interface CustomFieldDao : BaseDao<CustomFieldEntity> {
     @Transaction
     @Query("SELECT * FROM user WHERE id = :userId")
     fun getUserCustomFields(userId: Int): UserCustomFields
-
 }

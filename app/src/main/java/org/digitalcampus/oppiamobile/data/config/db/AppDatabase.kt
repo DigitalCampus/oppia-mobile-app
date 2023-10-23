@@ -31,12 +31,12 @@ import org.digitalcampus.oppiamobile.data.utils.converters.DateConverters
         UserCustomFieldEntity::class,
     ],
     version = 2,
-    exportSchema = false)
+    exportSchema = false,
+)
 @TypeConverters(DateConverters::class)
-abstract class AppDatabase: RoomDatabase() {
+abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun customFieldDao(): CustomFieldDao
     abstract fun preferencesDao(): PreferencesDao
     abstract fun courseDao(): CourseDao
-
 }

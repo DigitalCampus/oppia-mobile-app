@@ -1,7 +1,6 @@
 package org.digitalcampus.oppiamobile.di
 
 import android.app.Application
-import android.content.Context
 import androidx.room.Room
 import dagger.Module
 import dagger.Provides
@@ -15,14 +14,13 @@ import org.digitalcampus.oppiamobile.data.user.remote.auth.AuthRemoteService
 import org.digitalcampus.oppiamobile.data.user.repository.UserDbDataSource
 import org.digitalcampus.oppiamobile.data.user.repository.UserRemoteDataSource
 import org.digitalcampus.oppiamobile.data.user.repository.UserRepository
-import org.digitalcampus.oppiamobile.domain.use_cases.UserLoginLocalUseCase
-import org.digitalcampus.oppiamobile.domain.use_cases.UserLoginRemoteUseCase
+import org.digitalcampus.oppiamobile.domain.useCases.UserLoginLocalUseCase
+import org.digitalcampus.oppiamobile.domain.useCases.UserLoginRemoteUseCase
 import org.digitalcampus.oppiamobile.utils.ConnectivityUtils
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 import javax.inject.Singleton
-
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -35,14 +33,16 @@ class AppModule {
     @Singleton
     @Provides
     fun provideDatabase(app: Application): AppDatabase = Room.databaseBuilder(
-        app, AppDatabase::class.java, "oppiamobile-db")
+        app,
+        AppDatabase::class.java,
+        "oppiamobile-db",
+    )
         .fallbackToDestructiveMigration()
         .build()
 
     @Singleton
     @Provides
     fun provideRemote(): Retrofit {
-
         val okHttpClient = HttpLoggingInterceptor().run {
             level = HttpLoggingInterceptor.Level.BODY
             OkHttpClient.Builder().addInterceptor(this).build()
@@ -53,7 +53,6 @@ class AppModule {
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-
     }
 
     @Singleton
@@ -76,7 +75,7 @@ class AppModule {
     @Provides
     fun provideAuthRepository(
         authDbDataSource: UserDbDataSource,
-        userRemoteDataSource: UserRemoteDataSource
+        userRemoteDataSource: UserRemoteDataSource,
     ) = UserRepository(authDbDataSource, userRemoteDataSource)
 
     @Singleton
@@ -86,7 +85,6 @@ class AppModule {
     @Singleton
     @Provides
     fun provideUserLoginLocalUseCase(userRepository: UserRepository) = UserLoginLocalUseCase(userRepository)
-
 
     // TODO COMENTAR aquí se pueden llegar a crear muchísimos Provides, organizamos por funcionalidad o modelo?
 }

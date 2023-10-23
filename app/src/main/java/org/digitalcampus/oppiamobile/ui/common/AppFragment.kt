@@ -11,8 +11,6 @@ open class AppFragment : Fragment() {
 
     private var progressDialog: ProgressDialog? = null
 
-
-
     fun toast(message: String?) {
         Toast.makeText(activity, message, Toast.LENGTH_LONG).show()
     }
@@ -46,5 +44,4 @@ open class AppFragment : Fragment() {
 
     protected val isProgressDialogShowing: Boolean
         get() = progressDialog != null && progressDialog!!.isShowing
-
 }

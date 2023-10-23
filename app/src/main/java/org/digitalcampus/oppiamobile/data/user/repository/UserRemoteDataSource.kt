@@ -14,7 +14,7 @@ class UserRemoteDataSource @Inject constructor(private val authRemoteService: Au
             response.username,
             response.firstName,
             response.lastName,
-            response.apiKey
+            response.apiKey,
         )
     }
 }

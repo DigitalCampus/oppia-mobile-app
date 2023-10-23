@@ -18,16 +18,19 @@ data class CourseEntity(
     @ColumnInfo(name = "sequencing") val sequencing: String,
 )
 
-@Entity(tableName = "course_lang",
-    foreignKeys = [ForeignKey(
-        entity = CourseEntity::class,
-        parentColumns = arrayOf("id"),
-        childColumns = arrayOf("course_id"),
-        onDelete = ForeignKey.CASCADE
-    )]
+@Entity(
+    tableName = "course_lang",
+    foreignKeys = [
+        ForeignKey(
+            entity = CourseEntity::class,
+            parentColumns = arrayOf("id"),
+            childColumns = arrayOf("course_id"),
+            onDelete = ForeignKey.CASCADE,
+        ),
+    ],
 )
 data class CourseLangEntity(
     @PrimaryKey(autoGenerate = true) val id: Long,
-    @ColumnInfo(name = "course_id") val courseId : Long,
+    @ColumnInfo(name = "course_id") val courseId: Long,
     @ColumnInfo(name = "lang") val lang: String,
 )

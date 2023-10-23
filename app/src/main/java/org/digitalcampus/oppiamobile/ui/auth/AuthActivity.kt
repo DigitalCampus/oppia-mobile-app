@@ -17,7 +17,6 @@ import org.digitalcampus.oppiamobile.ui.common.ActivityPagerAdapter
 @AndroidEntryPoint
 class AuthActivity : AppCompatActivity() {
 
-
     companion object {
         private const val TAB_WELCOME = 0
         private const val TAB_LOGIN = 1
@@ -37,7 +36,6 @@ class AuthActivity : AppCompatActivity() {
 
     private var currentTab = TAB_WELCOME
     private lateinit var binding: ActivityWelcomeBinding
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,13 +64,14 @@ class AuthActivity : AppCompatActivity() {
 //        tabTitles.add(this.getString(R.string.tab_title_remember_username))
         val apAdapter = ActivityPagerAdapter(
             this,
-            supportFragmentManager, fragments, tabTitles
+            supportFragmentManager,
+            fragments,
+            tabTitles,
         )
         binding.activityWelcomePager.setAdapter(apAdapter)
         binding.activityWelcomePager.setCurrentItem(currentTab)
         setMenuOverflowIconColor(currentTab)
     }
-
 
 //    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 //        menuInflater.inflate(R.menu.activity_welcome, menu)

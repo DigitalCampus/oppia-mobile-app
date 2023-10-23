@@ -1,6 +1,4 @@
 import com.android.build.gradle.internal.api.BaseVariantOutputImpl
-import java.util.Properties
-import java.io.FileInputStream
 
 plugins {
     id("com.android.application")
@@ -51,9 +49,9 @@ android {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             applicationVariants.all {
-                outputs.all{
+                outputs.all {
                     if (name.contains("release")) {
-                        (this as BaseVariantOutputImpl).outputFileName = "OppiaMobile-v${versionName}.apk"
+                        (this as BaseVariantOutputImpl).outputFileName = "OppiaMobile-v$versionName.apk"
                     }
                 }
             }
@@ -84,9 +82,8 @@ dependencies {
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.fragment:fragment-ktx:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
-    implementation("androidx.appcompat:appcompat:${appcompatVersion}")
+    implementation("androidx.appcompat:appcompat:$appcompatVersion")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
@@ -101,7 +98,6 @@ dependencies {
     implementation("androidx.room:room-ktx:$roomVersion")
     ksp("androidx.room:room-compiler:$roomVersion")
 
-
     implementation("com.google.dagger:hilt-android:$hiltVersion")
     kapt("com.google.dagger:hilt-compiler:$hiltVersion")
 
@@ -112,9 +108,9 @@ dependencies {
     implementation("org.jacoco:org.jacoco.core:0.8.8")
 
     // Kotlin Dependencies
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${coroutinesVersion}")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${coroutinesVersion}")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
 }
 
 ktlint {
@@ -131,16 +127,17 @@ sonar {
     properties {
         property("sonar.projectName", "Oppia Mobile APP")
         property("sonar.projectKey", "DigitalCampus_oppia-mobile-app")
-        property("sonar.organization",  "oppiamobile")
+        property("sonar.organization", "oppiamobile")
         property("sonar.host.url", "https://sonarcloud.io")
         property("sonar.projectVersion", android.defaultConfig.versionName)
         property("sonar.tests", "src/test/java, src/androidTest/java")
         property("sonar.sourceEncoding", "UTF-8")
-        property("sonar.kotlin.ktlint.reportPaths",
+        property(
+            "sonar.kotlin.ktlint.reportPaths",
             "build/reports/ktlint/ktlintAndroidTestSourceSetCheck/ktlintAndroidTestSourceSetCheck.xml," +
-            "build/reports/ktlint/ktlintKotlinScriptCheck/ktlintKotlinScriptCheck.xml," +
-            "build/reports/ktlint/ktlintMainSourceSetCheck/ktlintMainSourceSetCheck.xml," +
-            "build/reports/ktlint/ktlintTestSourceSetCheck/ktlintTestSourceSetCheck.xml"
+                "build/reports/ktlint/ktlintKotlinScriptCheck/ktlintKotlinScriptCheck.xml," +
+                "build/reports/ktlint/ktlintMainSourceSetCheck/ktlintMainSourceSetCheck.xml," +
+                "build/reports/ktlint/ktlintTestSourceSetCheck/ktlintTestSourceSetCheck.xml",
         )
         property("sonar.java.coveragePlugin", "jacoco")
         property("sonar.junit.reportPaths", "**/test-results/**/*.xml")

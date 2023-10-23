@@ -1,4 +1,4 @@
-package org.digitalcampus.oppiamobile.domain.use_cases
+package org.digitalcampus.oppiamobile.domain.useCases
 
 class CheckFieldNotEmpty {
 

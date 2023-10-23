@@ -5,7 +5,7 @@ import javax.inject.Inject
 
 class UserRepository @Inject constructor(
     private val authDbDataSource: UserDbDataSource, // TODO COMENTAR: prefijo auth o user?
-    private val userRemoteDataSource: UserRemoteDataSource
+    private val userRemoteDataSource: UserRemoteDataSource,
 ) {
 
     suspend fun login(username: String, password: String): User {
@@ -16,8 +16,8 @@ class UserRepository @Inject constructor(
                 localUser.copy(
                     first_name = user.firstName,
                     last_name = user.lastName,
-                    api_key = user.apiKey
-                )
+                    api_key = user.apiKey,
+                ),
             )
         }
 
