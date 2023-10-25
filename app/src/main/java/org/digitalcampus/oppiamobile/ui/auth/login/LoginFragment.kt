@@ -13,6 +13,7 @@ import org.digitalcampus.oppiamobile.R
 import org.digitalcampus.oppiamobile.databinding.FragmentLoginBinding
 import org.digitalcampus.oppiamobile.utils.UIUtils
 
+@AndroidEntryPoint
 class LoginFragment : AppFragment() {
 
     private val viewModel: LoginViewModel by viewModels()

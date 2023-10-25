@@ -1,6 +1,8 @@
 package org.digitalcampus.oppiamobile.di
 
 import android.app.Application
+import android.content.SharedPreferences
+import androidx.preference.PreferenceManager
 import androidx.room.Room
 import dagger.Module
 import dagger.Provides
@@ -8,6 +10,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.digitalcampus.oppiamobile.data.config.BASE_URL
 import org.digitalcampus.oppiamobile.data.config.db.AppDatabase
 import org.digitalcampus.oppiamobile.data.user.db.dao.UserDao
 import org.digitalcampus.oppiamobile.data.user.remote.auth.AuthRemoteService
@@ -42,14 +45,29 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideRemote(): Retrofit {
+    fun provideSharedPreferences(app: Application): SharedPreferences =
+        PreferenceManager.getDefaultSharedPreferences(app)
+
+    @Singleton
+    @Provides
+    @BaseUrl
+    fun provideBaseUrl(prefs: SharedPreferences): String = prefs.getString(BASE_URL, "https://staging.oppia-mobile.org/")
+        ?: throw IllegalStateException("No default base url. Is it configured in properties file?")
+
+    @Singleton
+    @Provides
+    fun provideRemote(@BaseUrl baseUrl: String): Retrofit {
+
         val okHttpClient = HttpLoggingInterceptor().run {
             level = HttpLoggingInterceptor.Level.BODY
             OkHttpClient.Builder().addInterceptor(this).build()
         }
 
+
+        val apiPath = "api/v2/"
+
         return Retrofit.Builder()
-            .baseUrl("https://staging.oppia-mobile.org/api/v2/")
+            .baseUrl("$baseUrl$apiPath")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -69,7 +87,8 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideAuthRemoteDataSource(authRemoteService: AuthRemoteService) = UserRemoteDataSource(authRemoteService)
+    fun provideAuthRemoteDataSource(authRemoteService: AuthRemoteService) =
+        UserRemoteDataSource(authRemoteService)
 
     @Singleton
     @Provides

@@ -65,18 +65,21 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    buildFeatures {
+        buildConfig = true
+        viewBinding = true
+    }
 
-    android.buildFeatures.viewBinding = true
 }
 
 dependencies {
 
-    val workVersion = "2.7.1"
+//    val workVersion = "2.7.1"
     val roomVersion = "2.6.0"
-    val fragmentVersion = "1.5.4"
+//    val fragmentVersion = "1.5.4"
     val hiltVersion = "2.48.1"
     val appcompatVersion = "1.6.1"
-    val espressoVersion = "3.5.1"
+//    val espressoVersion = "3.5.1"
     val kotlinVersion = "1.8.20"
     val coroutinesVersion = "1.7.3"
 
@@ -93,6 +96,8 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    implementation("androidx.preference:preference:1.2.0")
 
     implementation("commons-codec:commons-codec:1.16.0")
 
