@@ -1,4 +1,5 @@
 root = true
 
 [*.{kt,kts}]
-ktlint_standard_final-newline = disabled
+# Disable here specific ktlint rules
+#ktlint_standard_final-newline = disabled

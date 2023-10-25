@@ -1,4 +1,5 @@
 import com.android.build.gradle.internal.api.BaseVariantOutputImpl
+import com.android.build.gradle.internal.tasks.factory.dependsOn
 
 plugins {
     id("com.android.application")
@@ -116,13 +117,14 @@ dependencies {
 ktlint {
     android.set(true)
     version.set("0.50.0")
-    ignoreFailures.set(false)
+    ignoreFailures.set(true)
     reporters {
         reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.CHECKSTYLE)
         reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.HTML)
     }
 }
 
+tasks.sonar.dependsOn("ktlintCheck")
 sonar {
     properties {
         property("sonar.projectName", "Oppia Mobile APP")
