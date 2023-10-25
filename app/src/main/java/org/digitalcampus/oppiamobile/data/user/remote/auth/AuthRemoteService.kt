@@ -9,5 +9,12 @@ interface AuthRemoteService {
     suspend fun login(@Body loginRequest: LoginRequest): LoginResponse
 
     @POST("register/")
-    suspend fun register(@Body loginRequest: LoginRequest): LoginResponse
+    suspend fun register(@Body registerRequest: RegisterRequest): RegisterResponse
+
+    @POST("username/")
+    suspend fun rememberUsername(@Body rememberUsernameRequest: RememberUsernameRequest): RememberUsernameResponse
+
+    @POST("reset/")
+    suspend fun resetPassword(@Body resetPasswordRequest: ResetPasswordRequest): ResetPasswordResponse
+
 }

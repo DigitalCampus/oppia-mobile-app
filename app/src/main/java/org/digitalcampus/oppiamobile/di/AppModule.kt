@@ -54,6 +54,7 @@ class AppModule {
     fun provideBaseUrl(prefs: SharedPreferences): String = prefs.getString(BASE_URL, "https://staging.oppia-mobile.org/")
         ?: throw IllegalStateException("No default base url. Is it configured in properties file?")
 
+    // TODO Al ser singleton, comprobar que al cambiar de url se cambien bien este proveedor de Retrofit
     @Singleton
     @Provides
     fun provideRemote(@BaseUrl baseUrl: String): Retrofit {
@@ -73,37 +74,13 @@ class AppModule {
             .build()
     }
 
+    // TODO Al ser singleton, comprobar que al cambiar de url se cambien bien este proveedor de ApiKey
+    //TODO Hardcodeado, coger de shared prefs
     @Singleton
     @Provides
-    fun provideUserDao(db: AppDatabase) = db.userDao()
+    @ApiKey
+    fun provideApiKey(prefs: SharedPreferences): String = "ApiKey jbc25:896753f4968d1af4555fb70b454a27572dafe075"
 
-    @Singleton
-    @Provides
-    fun provideAuthDbDataSource(userDao: UserDao) = UserDbDataSource(userDao)
-
-    @Singleton
-    @Provides
-    fun provideAuthRemoteService(retrofit: Retrofit) = retrofit.create<AuthRemoteService>()
-
-    @Singleton
-    @Provides
-    fun provideAuthRemoteDataSource(authRemoteService: AuthRemoteService) =
-        UserRemoteDataSource(authRemoteService)
-
-    @Singleton
-    @Provides
-    fun provideAuthRepository(
-        authDbDataSource: UserDbDataSource,
-        userRemoteDataSource: UserRemoteDataSource,
-    ) = UserRepository(authDbDataSource, userRemoteDataSource)
-
-    @Singleton
-    @Provides
-    fun provideUserLoginRemoteUseCase(userRepository: UserRepository) = UserLoginRemoteUseCase(userRepository)
-
-    @Singleton
-    @Provides
-    fun provideUserLoginLocalUseCase(userRepository: UserRepository) = UserLoginLocalUseCase(userRepository)
 
     // TODO COMENTAR aquí se pueden llegar a crear muchísimos Provides, organizamos por funcionalidad o modelo?
 }

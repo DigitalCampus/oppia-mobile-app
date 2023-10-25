@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import org.digitalcampus.oppiamobile.domain.useCases.TestApiClientUseCase
 import org.digitalcampus.oppiamobile.domain.useCases.UserLoginLocalUseCase
 import org.digitalcampus.oppiamobile.domain.useCases.UserLoginRemoteUseCase
 import org.digitalcampus.oppiamobile.ui.common.AppViewModel
@@ -18,6 +19,7 @@ class LoginViewModel @Inject constructor(
     private val userLoginRemoteUseCase: UserLoginRemoteUseCase,
     private val userLoginLocalUseCase: UserLoginLocalUseCase,
     private val connectivityUtils: ConnectivityUtils,
+    private val testApiClientUseCase: TestApiClientUseCase,
 ) : AppViewModel() {
 
     private val _uiState = MutableStateFlow(UiState())
@@ -28,6 +30,12 @@ class LoginViewModel @Inject constructor(
         val error: String? = null,
         val loginSuccess: Boolean = false,
     )
+
+    init {
+        viewModelScope.launch {
+            testApiClientUseCase()
+        }
+    }
 
     fun onErrorDialogClosed() {
         _uiState.update { it.copy(error = null) }
