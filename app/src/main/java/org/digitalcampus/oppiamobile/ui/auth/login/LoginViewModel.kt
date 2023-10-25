@@ -32,6 +32,7 @@ class LoginViewModel @Inject constructor(
     )
 
     init {
+        // TODO for testing api client. Remove at end
         viewModelScope.launch {
             testApiClientUseCase()
         }
