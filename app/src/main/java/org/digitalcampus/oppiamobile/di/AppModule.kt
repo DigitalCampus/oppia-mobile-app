@@ -12,17 +12,9 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.digitalcampus.oppiamobile.data.config.BASE_URL
 import org.digitalcampus.oppiamobile.data.config.db.AppDatabase
-import org.digitalcampus.oppiamobile.data.user.db.dao.UserDao
-import org.digitalcampus.oppiamobile.data.user.remote.auth.AuthRemoteService
-import org.digitalcampus.oppiamobile.data.user.repository.UserDbDataSource
-import org.digitalcampus.oppiamobile.data.user.repository.UserRemoteDataSource
-import org.digitalcampus.oppiamobile.data.user.repository.UserRepository
-import org.digitalcampus.oppiamobile.domain.useCases.UserLoginLocalUseCase
-import org.digitalcampus.oppiamobile.domain.useCases.UserLoginRemoteUseCase
 import org.digitalcampus.oppiamobile.utils.ConnectivityUtils
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import javax.inject.Singleton
 
 @Module
@@ -80,7 +72,6 @@ class AppModule {
     @Provides
     @ApiKey
     fun provideApiKey(prefs: SharedPreferences): String = "ApiKey jbc25:896753f4968d1af4555fb70b454a27572dafe075"
-
 
     // TODO COMENTAR aquí se pueden llegar a crear muchísimos Provides, organizamos por funcionalidad o modelo?
 }

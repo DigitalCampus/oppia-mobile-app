@@ -1,7 +1,6 @@
-package org.digitalcampus.oppiamobile.domain.use_cases
+package org.digitalcampus.oppiamobile.domain.useCases
 
 import android.util.Log
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import org.digitalcampus.oppiamobile.data.course.remote.CourseRemoteService
 import org.digitalcampus.oppiamobile.di.ApiKey
