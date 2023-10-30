@@ -8,7 +8,7 @@ import org.digitalcampus.oppiamobile.data.config.db.AppDatabase
 import org.digitalcampus.oppiamobile.data.course.remote.CourseRemoteService
 import org.digitalcampus.oppiamobile.data.course.repository.CourseRemoteDataSource
 import org.digitalcampus.oppiamobile.di.ApiKey
-import org.digitalcampus.oppiamobile.domain.use_cases.TestApiClientUseCase
+import org.digitalcampus.oppiamobile.domain.useCases.TestApiClientUseCase
 import retrofit2.Retrofit
 import retrofit2.create
 import javax.inject.Singleton

@@ -7,18 +7,15 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import org.digitalcampus.oppiamobile.domain.useCases.UserLoginLocalUseCase
-import org.digitalcampus.oppiamobile.domain.useCases.UserLoginRemoteUseCase
-import org.digitalcampus.oppiamobile.domain.use_cases.TestApiClientUseCase
+import org.digitalcampus.oppiamobile.domain.model.User
+import org.digitalcampus.oppiamobile.domain.useCases.TestApiClientUseCase
+import org.digitalcampus.oppiamobile.domain.useCases.UserLoginUseCase
 import org.digitalcampus.oppiamobile.ui.common.AppViewModel
-import org.digitalcampus.oppiamobile.utils.ConnectivityUtils
 import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val userLoginRemoteUseCase: UserLoginRemoteUseCase,
-    private val userLoginLocalUseCase: UserLoginLocalUseCase,
-    private val connectivityUtils: ConnectivityUtils,
+    private val userLoginUseCase: UserLoginUseCase,
     private val testApiClientUseCase: TestApiClientUseCase,
 ) : AppViewModel() {
 
@@ -29,6 +26,7 @@ class LoginViewModel @Inject constructor(
         val loading: Boolean = false,
         val error: String? = null,
         val loginSuccess: Boolean = false,
+        val user: User? = null,
     )
 
     init {
@@ -43,32 +41,36 @@ class LoginViewModel @Inject constructor(
     }
 
     fun onLoginClick(username: String, password: String) {
-        if (username.isBlank()) {
-            _uiState.update { it.copy(error = "Username is emnpty") }
-        } else if (password.isBlank()) {
-            _uiState.update { it.copy(error = "Password is emnpty") }
-        } else {
+        val result = validate(username, password)
+        if (result){
             doLogin(username, password)
         }
     }
 
-    private fun doLogin(username: String, password: String) {
-        val isConnected = connectivityUtils.isConnected()
+    private fun validate(username: String, password: String) : Boolean {
+        var result = true
+        if (username.isBlank()) {
+            _uiState.update { it.copy(error = "Username is empty") }
+            result = false
+        } else if (password.isBlank()) {
+            _uiState.update { it.copy(error = "Password is empty") }
+            result = false
+        }
 
+        return result
+    }
+
+    private fun doLogin(username: String, password: String) {
         viewModelScope.launch {
             _uiState.update { it.copy(loading = true) }
 
             try {
-                val user =
-                    if (isConnected) {
-                        userLoginRemoteUseCase(username, password)
-                    } else {
-                        userLoginLocalUseCase(username, password)
-                    }
+                val user = userLoginUseCase(username, password)
 
                 Log.d(TAG, "doLogin: User: $user")
 
-                _uiState.update { it.copy(error = "Login success") } // for testing
+                _uiState.update { it.copy(error = "Login success", user = user) } // for testing
+
 
                 // TODO Go to main activity
             } catch (e: Exception) {
@@ -78,8 +80,6 @@ class LoginViewModel @Inject constructor(
             } finally {
                 _uiState.update { it.copy(loading = false) }
             }
-
-
         }
     }
 }

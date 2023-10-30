@@ -10,8 +10,8 @@ import org.digitalcampus.oppiamobile.data.user.remote.auth.AuthRemoteService
 import org.digitalcampus.oppiamobile.data.user.repository.UserDbDataSource
 import org.digitalcampus.oppiamobile.data.user.repository.UserRemoteDataSource
 import org.digitalcampus.oppiamobile.data.user.repository.UserRepository
-import org.digitalcampus.oppiamobile.domain.useCases.UserLoginLocalUseCase
-import org.digitalcampus.oppiamobile.domain.useCases.UserLoginRemoteUseCase
+import org.digitalcampus.oppiamobile.domain.useCases.UserLoginUseCase
+import org.digitalcampus.oppiamobile.utils.ConnectivityUtils
 import retrofit2.Retrofit
 import retrofit2.create
 import javax.inject.Singleton
@@ -41,14 +41,12 @@ class UserModule {
     @Provides
     fun provideAuthRepository(
         authDbDataSource: UserDbDataSource,
-        userRemoteDataSource: UserRemoteDataSource
-    ) = UserRepository(authDbDataSource, userRemoteDataSource)
+        userRemoteDataSource: UserRemoteDataSource,
+        connectivityUtils: ConnectivityUtils
+    ) = UserRepository(authDbDataSource, userRemoteDataSource, connectivityUtils)
 
     @Singleton
     @Provides
-    fun provideUserLoginRemoteUseCase(userRepository: UserRepository) = UserLoginRemoteUseCase(userRepository)
+    fun provideUserLoginUseCase(userRepository: UserRepository) = UserLoginUseCase(userRepository)
 
-    @Singleton
-    @Provides
-    fun provideUserLoginLocalUseCase(userRepository: UserRepository) = UserLoginLocalUseCase(userRepository)
 }

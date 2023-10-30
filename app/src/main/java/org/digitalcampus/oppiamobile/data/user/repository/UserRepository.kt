@@ -1,14 +1,27 @@
 package org.digitalcampus.oppiamobile.data.user.repository
 
+import org.digitalcampus.oppiamobile.data.user.db.entity.passwordEncrypted
 import org.digitalcampus.oppiamobile.domain.model.User
+import org.digitalcampus.oppiamobile.utils.ConnectivityUtils
+import org.digitalcampus.oppiamobile.utils.CryptoUtils
 import javax.inject.Inject
 
 class UserRepository @Inject constructor(
     private val authDbDataSource: UserDbDataSource, // TODO COMENTAR: prefijo auth o user?
     private val userRemoteDataSource: UserRemoteDataSource,
+    private val connectivityUtils: ConnectivityUtils
 ) {
 
     suspend fun login(username: String, password: String): User {
+        val isConnected = connectivityUtils.isConnected()
+        return if (isConnected) {
+            loginRemotely(username, password)
+        } else {
+            loginLocaly(username, password)
+        }
+    }
+
+    private suspend fun loginRemotely(username: String, password: String): User {
         val user = userRemoteDataSource.login(username, password)
         val localUser = authDbDataSource.getByUsername(username)
         localUser?.let {
@@ -27,5 +40,17 @@ class UserRepository @Inject constructor(
         return user
     }
 
-    suspend fun getLocalUserByUsername(username: String) = authDbDataSource.getByUsername(username)
+    private suspend fun loginLocaly(username: String, password: String) : User {
+        val localUser = authDbDataSource.getByUsername(username)
+        if (localUser == null) {
+            throw Exception("User not found")
+        } else {
+            if (localUser.passwordEncrypted == CryptoUtils.encryptLocalPassword(password)) {
+                // TODO pending user api key check
+                return localUser.toUser()
+            } else {
+                throw Exception("Wrong password")
+            }
+        }
+    }
 }
