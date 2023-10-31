@@ -7,9 +7,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import org.digitalcampus.oppiamobile.domain.useCases.TestApiClientUseCase
 import org.digitalcampus.oppiamobile.domain.useCases.UserLoginLocalUseCase
 import org.digitalcampus.oppiamobile.domain.useCases.UserLoginRemoteUseCase
+import org.digitalcampus.oppiamobile.domain.use_cases.TestApiClientUseCase
 import org.digitalcampus.oppiamobile.ui.common.AppViewModel
 import org.digitalcampus.oppiamobile.utils.ConnectivityUtils
 import javax.inject.Inject

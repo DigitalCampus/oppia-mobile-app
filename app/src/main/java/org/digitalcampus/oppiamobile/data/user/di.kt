@@ -10,8 +10,8 @@ import org.digitalcampus.oppiamobile.data.user.remote.auth.AuthRemoteService
 import org.digitalcampus.oppiamobile.data.user.repository.UserDbDataSource
 import org.digitalcampus.oppiamobile.data.user.repository.UserRemoteDataSource
 import org.digitalcampus.oppiamobile.data.user.repository.UserRepository
-import org.digitalcampus.oppiamobile.domain.use_cases.UserLoginLocalUseCase
-import org.digitalcampus.oppiamobile.domain.use_cases.UserLoginRemoteUseCase
+import org.digitalcampus.oppiamobile.domain.useCases.UserLoginLocalUseCase
+import org.digitalcampus.oppiamobile.domain.useCases.UserLoginRemoteUseCase
 import retrofit2.Retrofit
 import retrofit2.create
 import javax.inject.Singleton
