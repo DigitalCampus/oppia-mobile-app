@@ -1,5 +1,8 @@
+import java.util.Properties
+import java.io.FileInputStream
 import com.android.build.gradle.internal.api.BaseVariantOutputImpl
 import com.android.build.gradle.internal.tasks.factory.dependsOn
+import java.util.Locale
 
 plugins {
     id("com.android.application")
@@ -14,6 +17,8 @@ plugins {
 apply(from = "../jacoco.gradle.kts")
 
 android {
+    val runtimeProps = loadRuntimeProps()
+
     namespace = "org.digitalcampus.oppiamobile"
     compileSdk = 34
 
@@ -37,6 +42,20 @@ android {
     }
 
     buildTypes {
+
+        all {
+            for (field in runtimeProps.keys()) {
+                val value = runtimeProps.getProperty(field as String, "")
+
+                val fieldType = when {
+                    value.lowercase(Locale.getDefault()) == "true" || value.lowercase(Locale.getDefault()) == "false"  -> "boolean"
+                    value.toIntOrNull() != null -> "int"
+                    else -> "String"
+                }
+
+                buildConfigField(fieldType, field, if (fieldType == "String") "\"$value\"" else value  )
+            }
+        }
 
         debug {
             multiDexEnabled = true
@@ -122,6 +141,21 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion")
+}
+
+fun loadRuntimeProps() : Properties {
+    val runtimeProps = Properties()
+    runtimeProps.load(FileInputStream(rootProject.file("oppia-default.properties")))
+
+    val oppiaPropsFile = rootProject.file("custom.properties")
+    if (oppiaPropsFile.canRead()) {
+        logger.lifecycle("Fetching properties from external file")
+        runtimeProps.load(FileInputStream(oppiaPropsFile))
+    } else {
+        logger.error("No properties file found. Using default values.")
+    }
+
+    return runtimeProps
 }
 
 ktlint {

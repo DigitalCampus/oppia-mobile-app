@@ -21,24 +21,19 @@ class LoginFragment : AppFragment() {
 
     private lateinit var binding: FragmentLoginBinding
 
-    companion object {
-        @JvmStatic
-        fun newInstance(): LoginFragment = LoginFragment()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
-        return binding.getRoot()
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.loginBtn.setOnClickListener { v -> onLoginClick() }
+        binding.loginBtn.setOnClickListener { onLoginClick() }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.uiState.flowWithLifecycle(lifecycle).collect { state ->
@@ -81,7 +76,7 @@ class LoginFragment : AppFragment() {
         hideProgressDialog()
     }
 
-    protected fun onLoginClick() {
+    private fun onLoginClick() {
         val username: String = binding.loginUsernameField.text.toString()
         val password: String = binding.loginPasswordField.text.toString()
         viewModel.onLoginClick(username, password)
