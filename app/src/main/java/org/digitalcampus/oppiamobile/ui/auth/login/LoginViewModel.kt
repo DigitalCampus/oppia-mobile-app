@@ -69,10 +69,7 @@ class LoginViewModel @Inject constructor(
 
                 Log.d(TAG, "doLogin: User: $user")
 
-                _uiState.update { it.copy(error = "Login success", user = user) } // for testing
-
-
-                // TODO Go to main activity
+                _uiState.update { it.copy(loginSuccess = true, user = user) }
             } catch (e: Exception) {
                 _uiState.update { it.copy(error = e.message) }
 

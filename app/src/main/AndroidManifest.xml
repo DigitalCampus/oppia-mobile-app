@@ -26,6 +26,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="org.digitalcampus.oppiamobile.ui.main.MainActivity"
+            android:exported="true"
+            android:theme="@style/Oppia.ToolbarTheme"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden">
+        </activity>
     </application>
 
 </manifest>

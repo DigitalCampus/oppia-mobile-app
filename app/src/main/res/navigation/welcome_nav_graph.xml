@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/welcome_nav_graph"
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="org.digitalcampus.oppiamobile.ui.auth.welcome.WelcomeFragment"
+        android:label="WelcomeFragment" >
+        <action
+            android:id="@+id/navigate_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="org.digitalcampus.oppiamobile.ui.auth.login.LoginFragment"
+        android:label="LoginFragment" />
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="org.digitalcampus.oppiamobile.ui.main.MainActivity"
+        android:label="MainActivity" />
+</navigation>
