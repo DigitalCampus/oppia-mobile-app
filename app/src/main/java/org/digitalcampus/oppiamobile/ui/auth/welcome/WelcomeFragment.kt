@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import org.digitalcampus.oppia.fragments.AppFragment
 import org.digitalcampus.oppiamobile.BuildConfig
+import org.digitalcampus.oppiamobile.R
 import org.digitalcampus.oppiamobile.databinding.FragmentWelcomeBinding
-import org.digitalcampus.oppiamobile.ui.auth.AuthActivity
 
 class WelcomeFragment : AppFragment() {
 
@@ -26,12 +27,10 @@ class WelcomeFragment : AppFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.welcomeLogin.setOnClickListener {
-            val authActivity: AuthActivity = activity as AuthActivity
-            authActivity.switchTab(AuthActivity.TAB_LOGIN)
+            findNavController().navigate(R.id.navigate_to_loginFragment)
         }
         binding.welcomeRegister.setOnClickListener {
-            val authActivity: AuthActivity = activity as AuthActivity
-            authActivity.switchTab(AuthActivity.TAB_REGISTER)
+//            findNavController().navigate(R.id.navigate_to_registerFragment)
         }
         // TODO: Add PrivacyActivity
 //        binding.welcomePrivacyInfo.setOnClickListener {

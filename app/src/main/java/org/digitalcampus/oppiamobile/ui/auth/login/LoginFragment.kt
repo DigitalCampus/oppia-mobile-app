@@ -12,6 +12,7 @@ import kotlinx.coroutines.launch
 import org.digitalcampus.oppia.fragments.AppFragment
 import org.digitalcampus.oppiamobile.R
 import org.digitalcampus.oppiamobile.databinding.FragmentLoginBinding
+import org.digitalcampus.oppiamobile.ui.auth.AuthActivity
 import org.digitalcampus.oppiamobile.utils.UIUtils
 
 @AndroidEntryPoint
@@ -53,6 +54,9 @@ class LoginFragment : AppFragment() {
                 }
 
                 if (state.loginSuccess) {
+                    viewModel.uiState.value.user?.let { user ->
+                        (activity as AuthActivity).onSuccessUserAccess(user, true)
+                    }
                     toast("Login success")
                 }
             }

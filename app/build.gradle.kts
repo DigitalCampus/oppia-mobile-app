@@ -105,12 +105,16 @@ dependencies {
 //    val espressoVersion = "3.5.1"
     val kotlinVersion = "1.8.20"
     val coroutinesVersion = "1.7.3"
+    val navVersion = "2.7.5"
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.fragment:fragment-ktx:1.6.1")
+    implementation("androidx.activity:activity-ktx:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.appcompat:appcompat:$appcompatVersion")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
+    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
@@ -135,6 +139,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation("org.jacoco:org.jacoco.core:0.8.8")
     testImplementation("org.mockito.kotlin:mockito-kotlin:5.1.0")
+    androidTestImplementation("androidx.navigation:navigation-testing:$navVersion")
 
     // Kotlin Dependencies
     implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
