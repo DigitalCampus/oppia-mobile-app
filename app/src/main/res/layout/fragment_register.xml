@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/register_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/bg_toolbar"
+        android:paddingStart="30dp"
+        android:paddingTop="@dimen/padding_medium_2"
+        android:paddingBottom="@dimen/padding_medium_2"
+        android:text="@string/tab_title_register"
+        android:textAppearance="@style/SectionHeader"
+        android:textColor="@color/toolbar_text_color"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <FrameLayout
+        android:id="@+id/frame_stepper_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/register_title"
+        android:background="@color/subtitle_bar_bg_color"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        app:layout_constraintTop_toBottomOf="@id/register_title">
+
+        <com.aceinteract.android.stepper.StepperNavigationView
+            android:id="@+id/stepper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:stepperItems="@menu/register_steps"
+            app:stepperIconSize="@dimen/stepperIconSize"
+            app:stepperTextSize="0dp"
+            app:stepperType="tab"
+            app:stepperWidgetColor="@color/oppia_primary_dark"/>
+
+    </FrameLayout>
+
+    <ScrollView
+        android:id="@+id/register_form"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frame_stepper_indicator">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/frame_stepper"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:navGraph="@navigation/register_nav_graph"/>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/previous"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:layout_marginStart="@dimen/margin_medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintWidth_percent="0.45"
+        android:text="@string/previous"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/next"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:layout_marginEnd="@dimen/margin_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintWidth_percent="0.45"
+        android:text="@string/next" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

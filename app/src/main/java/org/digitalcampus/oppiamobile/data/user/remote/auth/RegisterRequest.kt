@@ -8,5 +8,5 @@ data class RegisterRequest(
     @SerializedName("last_name") val lastName: String,
     @SerializedName("first_name") val firstName: String,
     @SerializedName("email") val email: String,
-    @SerializedName("username") val username: String
+    @SerializedName("username") val username: String,
 )

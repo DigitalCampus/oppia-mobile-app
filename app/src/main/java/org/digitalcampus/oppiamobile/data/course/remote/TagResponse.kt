@@ -1,8 +1,6 @@
 package org.digitalcampus.oppiamobile.data.course.remote
 
-
 import com.google.gson.annotations.SerializedName
-
 
 data class TagResponse(
     @SerializedName("courses")
@@ -12,9 +10,8 @@ data class TagResponse(
     @SerializedName("name")
     val name: String,
     @SerializedName("id")
-    val id: String = ""
+    val id: String = "",
 )
-
 
 data class CoursesItem(
     @SerializedName("author")
@@ -42,8 +39,5 @@ data class CoursesItem(
     @SerializedName("status")
     val status: String?,
     @SerializedName("username")
-    val username: String?
+    val username: String?,
 )
-
-
-

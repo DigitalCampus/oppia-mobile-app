@@ -16,5 +16,4 @@ interface AuthRemoteService {
 
     @POST("reset/")
     suspend fun resetPassword(@Body resetPasswordRequest: ResetPasswordRequest): ResetPasswordResponse
-
 }

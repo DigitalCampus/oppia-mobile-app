@@ -26,7 +26,6 @@ class AuthActivity : AppCompatActivity() {
         findNavController(R.id.nav_host_fragment).navigate(R.id.mainActivity)
     }
 
-
 //    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 //        menuInflater.inflate(R.menu.activity_welcome, menu)
 //        return true
@@ -53,14 +52,12 @@ class AuthActivity : AppCompatActivity() {
 //        }
 //    }
 
-
 //    private fun setMenuOverflowIconColor(tab: Int) {
 //        // Change color of 3 dots icon to ensure contrast
 //        val toolbar: Toolbar = findViewById(R.id.toolbar)
 //        val colorInt = ContextCompat.getColor(this, menuOverflowIconColor[tab]!!)
 //        toolbar.overflowIcon!!.colorFilter = PorterDuffColorFilter(colorInt, PorterDuff.Mode.SRC_IN)
 //    }
-
 
 //    fun onSuccessUserAccess(user: User?, firstLogin: Boolean) {
 //        val fromViewDigest = intent.getBooleanExtra(ViewDigestActivity.EXTRA_FROM_VIEW_DIGEST, false)

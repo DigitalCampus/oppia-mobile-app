@@ -42,12 +42,12 @@ class LoginViewModel @Inject constructor(
 
     fun onLoginClick(username: String, password: String) {
         val result = validate(username, password)
-        if (result){
+        if (result) {
             doLogin(username, password)
         }
     }
 
-    private fun validate(username: String, password: String) : Boolean {
+    private fun validate(username: String, password: String): Boolean {
         var result = true
         if (username.isBlank()) {
             _uiState.update { it.copy(error = "Username is empty") }

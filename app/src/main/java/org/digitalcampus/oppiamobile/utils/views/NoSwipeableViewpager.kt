@@ -13,7 +13,8 @@ class NoSwipeableViewpager : ViewPager {
     }
 
     constructor(context: Context?, attrs: AttributeSet?) : super(
-        context!!, attrs
+        context!!,
+        attrs,
     ) {
         canScroll = false
     }
