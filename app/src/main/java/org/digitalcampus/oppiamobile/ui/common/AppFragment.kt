@@ -1,4 +1,4 @@
-package org.digitalcampus.oppia.fragments
+package org.digitalcampus.oppiamobile.ui.common
 
 import android.app.ProgressDialog
 import android.widget.Toast

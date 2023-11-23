@@ -41,11 +41,9 @@ class CourseModule {
 //        userRemoteDataSource: UserRemoteDataSource
 //    ) = UserRepository(authDbDataSource, userRemoteDataSource)
 
-
     // TODO for testing api client. Remove at end
     @Singleton
     @Provides
     fun provideTestApiUseCase(courseRemoteService: CourseRemoteService, @ApiKey apiKey: String) =
         TestApiClientUseCase(courseRemoteService, apiKey)
-
 }

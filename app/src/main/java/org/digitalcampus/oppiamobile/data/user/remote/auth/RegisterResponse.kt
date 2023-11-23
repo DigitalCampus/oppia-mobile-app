@@ -8,5 +8,5 @@ data class RegisterResponse(
     @SerializedName("first_name") val firstName: String,
     @SerializedName("email") val email: String,
     @SerializedName("points") val points: Int,
-    @SerializedName("username") val username: String
+    @SerializedName("username") val username: String,
 )

@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import org.digitalcampus.oppia.fragments.AppFragment
 import org.digitalcampus.oppiamobile.BuildConfig
 import org.digitalcampus.oppiamobile.R
 import org.digitalcampus.oppiamobile.databinding.FragmentWelcomeBinding
+import org.digitalcampus.oppiamobile.ui.common.AppFragment
 
 class WelcomeFragment : AppFragment() {
 
@@ -17,7 +17,7 @@ class WelcomeFragment : AppFragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentWelcomeBinding.inflate(inflater, container, false)
         binding.welcomeRegister.visibility = if (BuildConfig.ALLOW_REGISTER_USER) View.VISIBLE else View.GONE
@@ -30,7 +30,7 @@ class WelcomeFragment : AppFragment() {
             findNavController().navigate(R.id.navigate_to_loginFragment)
         }
         binding.welcomeRegister.setOnClickListener {
-//            findNavController().navigate(R.id.navigate_to_registerFragment)
+            findNavController().navigate(R.id.navigate_to_registerFragment)
         }
         // TODO: Add PrivacyActivity
 //        binding.welcomePrivacyInfo.setOnClickListener {
@@ -38,5 +38,4 @@ class WelcomeFragment : AppFragment() {
 //            startActivity(iA)
 //        }
     }
-
 }

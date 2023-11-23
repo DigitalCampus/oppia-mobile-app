@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/register_nav_graph"
+    app:startDestination="@id/step">
+
+    <fragment
+        android:id="@+id/step"
+        android:name="org.digitalcampus.oppiamobile.ui.auth.register.RegisterStepFragment" >
+    </fragment>
+
+</navigation>

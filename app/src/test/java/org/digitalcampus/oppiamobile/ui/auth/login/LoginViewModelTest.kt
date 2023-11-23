@@ -32,7 +32,9 @@ internal class LoginViewModelTest {
             username = "testUsername",
             firstName = "Test",
             lastName = "User",
-            apiKey = "testApiKey"
+            apiKey = "testApiKey",
+            password = "testPass",
+            isOfflineRegister = false,
         )
         whenever(userLoginUseCase.invoke(ArgumentMatchers.anyString(), ArgumentMatchers.anyString()))
             .thenReturn(expectedUser)

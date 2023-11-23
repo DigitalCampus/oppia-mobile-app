@@ -45,10 +45,10 @@ data class UserCustomFieldEntity(
     @ColumnInfo(name = "user_id") val userId: Long,
     @ColumnInfo(name = "field_key") val fieldKey: String = "",
 
-    @ColumnInfo(name = "value_str") val valueStr: String?,
-    @ColumnInfo(name = "value_int") val valueInt: Int?,
-    @ColumnInfo(name = "value_bool") val valueBool: Boolean?,
-    @ColumnInfo(name = "value_float") val valueFloat: Float?,
+    @ColumnInfo(name = "value_str") val valueStr: String? = null,
+    @ColumnInfo(name = "value_int") val valueInt: Int? = null,
+    @ColumnInfo(name = "value_bool") val valueBool: Boolean? = null,
+    @ColumnInfo(name = "value_float") val valueFloat: Float? = null,
 )
 
 data class UserCustomFields(

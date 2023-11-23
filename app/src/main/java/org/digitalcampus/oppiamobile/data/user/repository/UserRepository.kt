@@ -1,6 +1,7 @@
 package org.digitalcampus.oppiamobile.data.user.repository
 
 import org.digitalcampus.oppiamobile.data.user.db.entity.passwordEncrypted
+import org.digitalcampus.oppiamobile.data.utils.mappers.UserEntityMapper
 import org.digitalcampus.oppiamobile.domain.model.User
 import org.digitalcampus.oppiamobile.utils.ConnectivityUtils
 import org.digitalcampus.oppiamobile.utils.CryptoUtils
@@ -9,7 +10,7 @@ import javax.inject.Inject
 class UserRepository @Inject constructor(
     private val authDbDataSource: UserDbDataSource, // TODO COMENTAR: prefijo auth o user?
     private val userRemoteDataSource: UserRemoteDataSource,
-    private val connectivityUtils: ConnectivityUtils
+    private val connectivityUtils: ConnectivityUtils,
 ) {
 
     suspend fun login(username: String, password: String): User {
@@ -27,9 +28,9 @@ class UserRepository @Inject constructor(
         localUser?.let {
             authDbDataSource.updateUser(
                 localUser.copy(
-                    first_name = user.firstName,
-                    last_name = user.lastName,
-                    api_key = user.apiKey,
+                    firstName = user.firstName,
+                    lastName = user.lastName,
+                    apiKey = user.apiKey ?: "",
                 ),
             )
         }
@@ -40,17 +41,37 @@ class UserRepository @Inject constructor(
         return user
     }
 
-    private suspend fun loginLocaly(username: String, password: String) : User {
+    private suspend fun loginLocaly(username: String, password: String): User {
         val localUser = authDbDataSource.getByUsername(username)
         if (localUser == null) {
             throw Exception("User not found")
         } else {
             if (localUser.passwordEncrypted == CryptoUtils.encryptLocalPassword(password)) {
                 // TODO pending user api key check
-                return localUser.toUser()
+                return UserEntityMapper().mapFromEntity(localUser)
             } else {
                 throw Exception("Wrong password")
             }
         }
+    }
+
+    suspend fun register(user: User) {
+        var saveUser = true
+        if (!user.isOfflineRegister) {
+            saveUser = submitUserToServer(user)
+        }
+
+        if (saveUser) {
+            val localUser = authDbDataSource.getByUsername(user.username)
+            if (!user.isOfflineRegister || localUser == null) {
+                authDbDataSource.insertUser(user)
+            } else {
+            }
+        }
+    }
+
+    private suspend fun submitUserToServer(user: User): Boolean {
+        val user = userRemoteDataSource.register(user)
+        return true
     }
 }

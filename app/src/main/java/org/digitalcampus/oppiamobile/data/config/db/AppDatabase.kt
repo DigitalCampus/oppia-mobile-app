@@ -11,6 +11,7 @@ import org.digitalcampus.oppiamobile.data.course.db.entity.MediaEntity
 import org.digitalcampus.oppiamobile.data.course.db.entity.SectionEntity
 import org.digitalcampus.oppiamobile.data.user.db.dao.CustomFieldDao
 import org.digitalcampus.oppiamobile.data.user.db.dao.PreferencesDao
+import org.digitalcampus.oppiamobile.data.user.db.dao.UserCustomFieldDao
 import org.digitalcampus.oppiamobile.data.user.db.dao.UserDao
 import org.digitalcampus.oppiamobile.data.user.db.entity.CustomFieldEntity
 import org.digitalcampus.oppiamobile.data.user.db.entity.PreferencesEntity
@@ -37,6 +38,7 @@ import org.digitalcampus.oppiamobile.data.utils.converters.DateConverters
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun customFieldDao(): CustomFieldDao
+    abstract fun userCustomFieldDao(): UserCustomFieldDao
     abstract fun preferencesDao(): PreferencesDao
     abstract fun courseDao(): CourseDao
 }

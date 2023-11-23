@@ -50,12 +50,10 @@ class AppModule {
     @Singleton
     @Provides
     fun provideRemote(@BaseUrl baseUrl: String): Retrofit {
-
         val okHttpClient = HttpLoggingInterceptor().run {
             level = HttpLoggingInterceptor.Level.BODY
             OkHttpClient.Builder().addInterceptor(this).build()
         }
-
 
         val apiPath = "api/v2/"
 
@@ -67,7 +65,7 @@ class AppModule {
     }
 
     // TODO Al ser singleton, comprobar que al cambiar de url se cambien bien este proveedor de ApiKey
-    //TODO Hardcodeado, coger de shared prefs
+    // TODO Hardcodeado, coger de shared prefs
     @Singleton
     @Provides
     @ApiKey

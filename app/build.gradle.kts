@@ -1,8 +1,8 @@
-import java.util.Properties
-import java.io.FileInputStream
 import com.android.build.gradle.internal.api.BaseVariantOutputImpl
 import com.android.build.gradle.internal.tasks.factory.dependsOn
+import java.io.FileInputStream
 import java.util.Locale
+import java.util.Properties
 
 plugins {
     id("com.android.application")
@@ -12,6 +12,7 @@ plugins {
     id("com.google.devtools.ksp")
     id("org.jlleitschuh.gradle.ktlint") version "11.6.1"
     id("org.sonarqube") version "4.4.1.3373"
+    id("kotlinx-serialization")
 }
 
 apply(from = "../jacoco.gradle.kts")
@@ -24,7 +25,7 @@ android {
 
     defaultConfig {
         applicationId = "org.digitalcampus.mobile.learning"
-        minSdk = 21
+        minSdk = 23
         targetSdk = 34
         versionCode = 112
         versionName = "8.0.0"
@@ -48,12 +49,12 @@ android {
                 val value = runtimeProps.getProperty(field as String, "")
 
                 val fieldType = when {
-                    value.lowercase(Locale.getDefault()) == "true" || value.lowercase(Locale.getDefault()) == "false"  -> "boolean"
+                    value.lowercase(Locale.getDefault()) == "true" || value.lowercase(Locale.getDefault()) == "false" -> "boolean"
                     value.toIntOrNull() != null -> "int"
                     else -> "String"
                 }
 
-                buildConfigField(fieldType, field, if (fieldType == "String") "\"$value\"" else value  )
+                buildConfigField(fieldType, field, if (fieldType == "String") "\"$value\"" else value)
             }
         }
 
@@ -92,7 +93,6 @@ android {
     testOptions {
         unitTests.isReturnDefaultValues = true
     }
-
 }
 
 dependencies {
@@ -133,6 +133,10 @@ dependencies {
     implementation("com.google.dagger:hilt-android:$hiltVersion")
     kapt("com.google.dagger:hilt-compiler:$hiltVersion")
 
+    // Third Party
+    implementation("com.github.acefalobi:android-stepper:0.3.0")
+    implementation("com.hbb20:android-country-picker:0.0.7")
+
     // TESTING
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -146,9 +150,11 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.1")
 }
 
-fun loadRuntimeProps() : Properties {
+fun loadRuntimeProps(): Properties {
     val runtimeProps = Properties()
     runtimeProps.load(FileInputStream(rootProject.file("oppia-default.properties")))
 
@@ -185,7 +191,7 @@ sonar {
         property("sonar.sourceEncoding", "UTF-8")
         property(
             "sonar.kotlin.ktlint.reportPaths",
-                "build/reports/ktlint/ktlintAndroidTestSourceSetCheck/ktlintAndroidTestSourceSetCheck.xml," +
+            "build/reports/ktlint/ktlintAndroidTestSourceSetCheck/ktlintAndroidTestSourceSetCheck.xml," +
                 "build/reports/ktlint/ktlintKotlinScriptCheck/ktlintKotlinScriptCheck.xml," +
                 "build/reports/ktlint/ktlintMainSourceSetCheck/ktlintMainSourceSetCheck.xml," +
                 "build/reports/ktlint/ktlintTestSourceSetCheck/ktlintTestSourceSetCheck.xml",

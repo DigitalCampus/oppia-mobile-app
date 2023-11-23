@@ -1,15 +1,13 @@
 package org.digitalcampus.oppiamobile.data.course.remote
 
-
 import com.google.gson.annotations.SerializedName
 
 data class TagsResponse(
     @SerializedName("meta")
     val meta: Meta,
     @SerializedName("tags")
-    val tags: List<TagsItem>?
+    val tags: List<TagsItem>?,
 )
-
 
 data class Meta(
     @SerializedName("next")
@@ -21,9 +19,8 @@ data class Meta(
     @SerializedName("total_count")
     val totalCount: Int,
     @SerializedName("limit")
-    val limit: Int
+    val limit: Int,
 )
-
 
 data class TagsItem(
     @SerializedName("highlight")
@@ -43,9 +40,5 @@ data class TagsItem(
     @SerializedName("description")
     val description: String?,
     @SerializedName("id")
-    val id: Int
+    val id: Int,
 )
-
-
-
-

@@ -1,0 +1,100 @@
+[
+  {
+    "order": 1,
+    "title": "First step",
+    "description":"Please enter a username and your name",
+    "fields":[
+      {
+        "name":"username",
+        "label":"Username",
+        "min_size": 4,
+        "required":true,
+        "helper_text":"Username must have at least 4 characters",
+        "type":"text"
+      },
+      {
+        "name":"firstName",
+        "label":"First Name",
+        "required":true,
+        "type":"text"
+      },
+      {
+        "name":"lastName",
+        "label":"Last Name",
+        "required":true,
+        "type":"text"
+      }
+    ]
+  },
+  {
+    "order": 2,
+    "title":"Second step",
+    "description":"Please enter a password",
+    "fields":[
+      {
+        "name":"password",
+        "label":"Password",
+        "required":true,
+        "min_size": 6,
+        "helper_text":"The password must have at least 6 characters.",
+        "type":"password"
+      },
+      {
+        "name":"repeatPassword",
+        "label":"Repeat Password",
+        "required":true,
+        "type":"password",
+        "should_match": "password"
+      }
+    ]
+  },
+  {
+    "order": 3,
+    "title":"Third step",
+    "description":"Please provide some extra contact information",
+    "fields":[
+      {
+        "name":"email",
+        "label":"Email",
+        "required":true,
+        "helper_text":"",
+        "type":"email"
+      },
+      {
+        "name":"phone",
+        "label":"Phone Number",
+        "required":false,
+        "helper_text":"",
+        "type":"phone"
+      },
+      {
+        "name":"organization",
+        "label":"Organization",
+        "required":false,
+        "helper_text":"",
+        "type":"text"
+      },
+      {
+        "name":"gender",
+        "label":"Gender",
+        "required":false,
+        "helper_text":"",
+        "type":"text"
+      },
+      {
+        "name":"age",
+        "label":"Age",
+        "required":false,
+        "helper_text":"",
+        "type":"number"
+      },
+      {
+        "name":"job",
+        "label":"Job",
+        "required":false,
+        "helper_text":"",
+        "type":"text"
+      }
+    ]
+  }
+]

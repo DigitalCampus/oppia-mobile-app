@@ -676,5 +676,9 @@
     <string name="offline_course_import.course_files_imported">Course files imported</string>
     <string name="bluetooth_not_supported">Bluetooth not supported</string>
 
+    <string name="next">Next</string>
+    <string name="register_step_1_description">Please, enter a username and your name</string>
+    <string name="previous">Previous</string>
+
 </resources>
 

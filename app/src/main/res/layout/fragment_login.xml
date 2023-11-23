@@ -37,9 +37,10 @@
                 android:id="@+id/input_layout_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:hintTextAppearance="@style/Oppia.TextLabel">
+                app:hintTextAppearance="@style/Oppia.TextLabel"
+                style="@style/Widget.Design.TextInputLayout">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/login_username_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -54,9 +55,10 @@
                 android:id="@+id/input_layout_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:passwordToggleEnabled="true">
+                app:passwordToggleEnabled="true"
+                style="@style/Widget.Design.TextInputLayout">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/login_password_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -75,12 +77,11 @@
                 android:layout_marginStart="@dimen/padding_large"
                 android:layout_marginTop="@dimen/padding_medium"
                 android:layout_marginEnd="@dimen/padding_large"
-                android:text="@string/title_login"
-                android:theme="@style/PrimaryButton" />
+                android:text="@string/title_login" />
 
             <Button
                 android:id="@+id/btn_reset_password"
-                style="?android:attr/borderlessButtonStyle"
+                style="@style/BorderlessButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/padding_large"
@@ -89,7 +90,7 @@
 
             <Button
                 android:id="@+id/btn_remember_username"
-                style="?android:attr/borderlessButtonStyle"
+                style="@style/BorderlessButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/padding_large"
@@ -109,6 +110,7 @@
 
             <Button
                 android:id="@+id/action_register_btn"
+                style="@style/SecondaryButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/padding_large"
