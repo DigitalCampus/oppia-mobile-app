@@ -7,6 +7,7 @@ import dagger.hilt.components.SingletonComponent
 import org.digitalcampus.oppiamobile.data.config.db.AppDatabase
 import org.digitalcampus.oppiamobile.data.course.remote.CourseRemoteService
 import org.digitalcampus.oppiamobile.data.course.repository.CourseRemoteDataSource
+import org.digitalcampus.oppiamobile.data.user.remote.profile.ProfileRemoteService
 import org.digitalcampus.oppiamobile.di.ApiKey
 import org.digitalcampus.oppiamobile.domain.useCases.TestApiClientUseCase
 import retrofit2.Retrofit
@@ -45,7 +46,7 @@ class CourseModule {
     // TODO for testing api client. Remove at end
     @Singleton
     @Provides
-    fun provideTestApiUseCase(courseRemoteService: CourseRemoteService, @ApiKey apiKey: String) =
-        TestApiClientUseCase(courseRemoteService, apiKey)
+    fun provideTestApiUseCase(remoteService: ProfileRemoteService, @ApiKey apiKey: String) =
+        TestApiClientUseCase(remoteService, apiKey)
 
 }

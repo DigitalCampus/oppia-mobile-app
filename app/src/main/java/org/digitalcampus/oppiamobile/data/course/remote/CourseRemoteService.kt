@@ -15,26 +15,26 @@ interface CourseRemoteService {
     @GET("tag/")
     suspend fun getTags(@Header("Authorization") apiKey: String): TagsResponse
 
-    @GET("tag/{id}")
+    @GET("tag/{id}/")
     suspend fun getTag(@Header("Authorization") apiKey: String, @Path("id") id: Int): TagResponse
 
     @GET("course/")
     suspend fun getCourses(@Header("Authorization") apiKey: String): CoursesResponse
 
-    @GET("course/{shortname}")
+    @GET("course/{shortname}/")
     suspend fun getCourse(
         @Header("Authorization") apiKey: String,
         @Path("shortname") shortname: String
     ): CourseItem
 
     @Streaming
-    @GET("course/{shortname}/download")
+    @GET("course/{shortname}/download/")
     suspend fun downloadCourse(
         @Header("Authorization") apiKey: String,
         @Path("shortname") shortname: String
     ): ResponseBody
 
-    @GET("course/{shortname}/activity")
+    @GET("course/{shortname}/activity/")
     suspend fun getCourseActivity(
         @Header("Authorization") apiKey: String,
         @Path("shortname") shortname: String

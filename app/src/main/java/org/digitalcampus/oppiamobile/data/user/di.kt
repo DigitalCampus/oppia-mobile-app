@@ -7,6 +7,7 @@ import dagger.hilt.components.SingletonComponent
 import org.digitalcampus.oppiamobile.data.config.db.AppDatabase
 import org.digitalcampus.oppiamobile.data.user.db.dao.UserDao
 import org.digitalcampus.oppiamobile.data.user.remote.auth.AuthRemoteService
+import org.digitalcampus.oppiamobile.data.user.remote.profile.ProfileRemoteService
 import org.digitalcampus.oppiamobile.data.user.repository.UserDbDataSource
 import org.digitalcampus.oppiamobile.data.user.repository.UserRemoteDataSource
 import org.digitalcampus.oppiamobile.data.user.repository.UserRepository
@@ -31,6 +32,10 @@ class UserModule {
     @Singleton
     @Provides
     fun provideAuthRemoteService(retrofit: Retrofit) = retrofit.create<AuthRemoteService>()
+
+    @Singleton
+    @Provides
+    fun provideProfileRemoteService(retrofit: Retrofit) = retrofit.create<ProfileRemoteService>()
 
     @Singleton
     @Provides
