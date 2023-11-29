@@ -34,7 +34,7 @@ internal class LoginViewModelTest {
             lastName = "User",
             apiKey = "testApiKey"
         )
-        whenever(userLoginUseCase.invoke(ArgumentMatchers.anyString(), ArgumentMatchers.anyString()))
+        whenever(userLoginUseCase(ArgumentMatchers.anyString(), ArgumentMatchers.anyString()))
             .thenReturn(expectedUser)
 
         viewmodel.onLoginClick("testUsername", "Some Password")

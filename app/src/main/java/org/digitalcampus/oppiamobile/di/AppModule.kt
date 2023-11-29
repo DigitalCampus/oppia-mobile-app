@@ -67,11 +67,10 @@ class AppModule {
     }
 
     // TODO Al ser singleton, comprobar que al cambiar de url se cambien bien este proveedor de ApiKey
-    //TODO Hardcodeado, coger de shared prefs
+    //TODO Hardcodeado para probar api, coger de shared prefs
     @Singleton
     @Provides
     @ApiKey
     fun provideApiKey(prefs: SharedPreferences): String = "ApiKey jbc25:896753f4968d1af4555fb70b454a27572dafe075"
 
-    // TODO COMENTAR aquí se pueden llegar a crear muchísimos Provides, organizamos por funcionalidad o modelo?
 }
