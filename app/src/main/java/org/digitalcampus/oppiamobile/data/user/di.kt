@@ -5,12 +5,15 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import org.digitalcampus.oppiamobile.data.config.db.AppDatabase
+import org.digitalcampus.oppiamobile.data.gamification.remote.GamificationRemoteService
 import org.digitalcampus.oppiamobile.data.user.db.dao.UserDao
 import org.digitalcampus.oppiamobile.data.user.remote.auth.AuthRemoteService
 import org.digitalcampus.oppiamobile.data.user.remote.profile.ProfileRemoteService
 import org.digitalcampus.oppiamobile.data.user.repository.UserDbDataSource
 import org.digitalcampus.oppiamobile.data.user.repository.UserRemoteDataSource
 import org.digitalcampus.oppiamobile.data.user.repository.UserRepository
+import org.digitalcampus.oppiamobile.di.ApiKey
+import org.digitalcampus.oppiamobile.domain.useCases.TestApiClientUseCase
 import org.digitalcampus.oppiamobile.domain.useCases.UserLoginUseCase
 import org.digitalcampus.oppiamobile.utils.ConnectivityUtils
 import retrofit2.Retrofit
@@ -54,4 +57,10 @@ class UserModule {
     @Provides
     fun provideUserLoginUseCase(userRepository: UserRepository) = UserLoginUseCase(userRepository)
 
+
+    // TODO for testing api client. Remove at end
+    @Singleton
+    @Provides
+    fun provideTestApiUseCase(remoteService: GamificationRemoteService, @ApiKey apiKey: String) =
+        TestApiClientUseCase(remoteService, apiKey)
 }
